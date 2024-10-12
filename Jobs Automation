@@ -1,0 +1,43 @@
+'use client'
+
+import { useState } from 'react'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import JobPreferences from './JobPreferences'
+import JobList from './JobList'
+import ResumeCustomization from './ResumeCustomization'
+import ApplicationStatus from './ApplicationStatus'
+import Analytics from './Analytics'
+
+export default function Dashboard() {
+  const [activeTab, setActiveTab] = useState('jobList')
+
+  return (
+    <div className="w-full max-w-4xl">
+      <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList>
+          <TabsTrigger value="jobList">Job List</TabsTrigger>
+          <TabsTrigger value="jobPreferences">Job Preferences</TabsTrigger>
+          <TabsTrigger value="resumeCustomization">Resume Customization</TabsTrigger>
+          <TabsTrigger value="applicationStatus">Application Status</TabsTrigger>
+          <TabsTrigger value="analytics">Analytics</TabsTrigger>
+        </TabsList>
+        <TabsContent value="jobList">
+          <JobList />
+        </TabsContent>
+        <TabsContent value="jobPreferences">
+          <JobPreferences />
+        </TabsContent>
+        <TabsContent value="resumeCustomization">
+          <ResumeCustomization />
+        </TabsContent>
+        <TabsContent value="applicationStatus">
+          <ApplicationStatus />
+        </TabsContent>
+        <TabsContent value="analytics">
+          <Analytics />
+        </TabsContent>
+      </Tabs>
+    </div>
+  )
+}
